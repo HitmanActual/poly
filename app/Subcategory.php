@@ -5,28 +5,26 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class Subcategory extends Model
 {
     //
     use SoftDeletes;
 
-    protected $table = 'categories';
+    protected $table = 'subcategories';
     protected $fillable = [
         'thumbnail_path',
-        'category_title',
+        'subcategory_title',
         'description',
+        'category_id'
     ];
 
     public function getThumbnailPathAttribute($val)
     {
-        return ($val !== null) ? asset('images/category/' . $val) : "";
+        return ($val !== null) ? asset('images/subcategory/' . $val) : "";
     }
 
-
-
-    public function subcategories(){
-        return
-            $this->hasMany(Subcategory::class);
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 
 

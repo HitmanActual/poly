@@ -21,7 +21,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
+        $categories = Category::with(['subcategories'])->get();
         return $this->successResponse($categories, Response::HTTP_OK);
 
     }
