@@ -79,7 +79,7 @@ class CategoryController extends Controller
     {
         //
         $category = Category::findOrFail($category)->get();
-        return $this->successResponse($category, Response::HTTP_CREATED);
+        return $this->successResponse($category, Response::HTTP_OK);
 
     }
 

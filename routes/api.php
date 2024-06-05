@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\LevelController;
+use App\Http\Controllers\ModeController;
 use App\Http\Controllers\SubcategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -49,3 +51,24 @@ Route::group(['prefix' => 'subcategories'], function () {
     Route::post('/restore/{subcategory}', [SubcategoryController::class, 'restore']);
 
 });
+
+
+Route::group(['prefix' => 'levels'], function () {
+
+    Route::get('/', [LevelController::class, 'index']);
+
+});
+
+
+Route::group(['prefix' => 'modes'], function () {
+
+    Route::get('/', [ModeController::class, 'index']);
+    Route::post('/', [ModeController::class, 'store']);
+    Route::get('/{mode}', [ModeController::class, 'show']);
+    Route::patch('/{mode}', [ModeController::class, 'update']);
+    Route::delete('/{mode}', [ModeController::class, 'delete']);
+    Route::post('/restore/{mode}', [ModeController::class, 'restore']);
+
+});
+
+

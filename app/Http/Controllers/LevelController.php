@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Level;
+use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class LevelController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +18,9 @@ class LevelController extends Controller
     public function index()
     {
         //
+        $levels = Level::all();
+        return $this->successResponse($levels,Response::HTTP_OK);
+
     }
 
     /**
