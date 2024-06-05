@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ModeController;
 use App\Http\Controllers\SubcategoryController;
@@ -68,6 +69,13 @@ Route::group(['prefix' => 'modes'], function () {
     Route::patch('/{mode}', [ModeController::class, 'update']);
     Route::delete('/{mode}', [ModeController::class, 'delete']);
     Route::post('/restore/{mode}', [ModeController::class, 'restore']);
+
+});
+
+
+Route::group(['prefix' => 'languages'], function () {
+
+    Route::get('/', [LanguageController::class, 'index']);
 
 });
 
