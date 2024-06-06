@@ -6,6 +6,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ModeController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -79,4 +80,15 @@ Route::group(['prefix' => 'languages'], function () {
 
 });
 
+
+Route::group(['prefix' => 'subjects'], function () {
+
+    Route::get('/', [SubjectController::class, 'index']);
+    Route::post('/', [SubjectController::class, 'store']);
+    Route::get('/{subject}', [SubjectController::class, 'show']);
+    Route::patch('/{subject}', [SubjectController::class, 'update']);
+    Route::delete('/{subject}', [SubjectController::class, 'delete']);
+    Route::post('/restore/{subject}', [SubjectController::class, 'restore']);
+
+});
 
