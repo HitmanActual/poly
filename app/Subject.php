@@ -15,4 +15,7 @@ class Subject extends Model
         'description',
     ];
 
+    public function translation(){
+        return $this->hasMany(Translation::class);
+    }
 }

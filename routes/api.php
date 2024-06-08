@@ -7,6 +7,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ModeController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TranslationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -89,6 +90,17 @@ Route::group(['prefix' => 'subjects'], function () {
     Route::patch('/{subject}', [SubjectController::class, 'update']);
     Route::delete('/{subject}', [SubjectController::class, 'delete']);
     Route::post('/restore/{subject}', [SubjectController::class, 'restore']);
+
+});
+
+Route::group(['prefix' => 'translations'], function () {
+
+    Route::get('/', [TranslationController::class, 'index']);
+    Route::post('/', [TranslationController::class, 'store']);
+    Route::get('/{subject}', [TranslationController::class, 'show']);
+    Route::patch('/{subject}', [TranslationController::class, 'update']);
+    Route::delete('/{subject}', [TranslationController::class, 'delete']);
+    Route::post('/restore/{subject}', [TranslationController::class, 'restore']);
 
 });
 

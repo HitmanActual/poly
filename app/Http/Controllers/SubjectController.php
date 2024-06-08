@@ -62,7 +62,7 @@ class SubjectController extends Controller
     public function show($subject)
     {
         //
-        $subjects = Subject::findOrFail($subject);
+        $subjects = Subject::with('translation')->where('id',$subject)->get();
         return $this->successResponse($subjects, Response::HTTP_OK);
     }
 

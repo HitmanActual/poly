@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Language extends Model
 {
     //
+    public function translation(){
+        return $this->hasMany(Translation::class);
+    }
 }
