@@ -8,6 +8,7 @@ use App\Http\Controllers\ModeController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TranslationController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -103,4 +104,15 @@ Route::group(['prefix' => 'translations'], function () {
     Route::post('/restore/{subject}', [TranslationController::class, 'restore']);
 
 });
+
+
+Route::group(['prefix' => 'users'], function () {
+
+    Route::post('/register', [UserController::class, 'register']);
+    Route::post('/login', [UserController::class, 'login']);
+    Route::post('/logout', [UserController::class, 'logout']);
+
+
+});
+
 
