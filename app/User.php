@@ -56,4 +56,11 @@ class User extends Authenticatable
     public function level(){
         return $this->belongsTo(Level::class);
     }
+
+    public function translations(){
+        return $this->hasMany(Translation::class);
+    }
+
+
+
 }

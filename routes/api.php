@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\LanguageController;
@@ -112,6 +113,15 @@ Route::group(['prefix' => 'users'], function () {
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/logout', [UserController::class, 'logout']);
 
+
+});
+
+
+
+Route::group(['prefix' => 'activities'], function () {
+
+    Route::get('/', [ActivityController::class, 'index'])->middleware('auth:api');
+    Route::post('/', [ActivityController::class, 'store'])->middleware('auth:api');
 
 });
 
