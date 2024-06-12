@@ -9,4 +9,9 @@ class Country extends Model
 {
     //
     use SoftDeletes;
+
+    public function users(){
+        return
+            $this->hasMany(User::class);
+    }
 }

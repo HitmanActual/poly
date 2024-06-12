@@ -19,6 +19,11 @@ class UserController extends Controller
             'email' => 'email|required|unique:users',
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
+            'country_id'=>'required',
+            'age'=>'required',
+            'mode_id'=>'required',
+            'level_id'=>'required',
+            'language_id'=>'required',
 
 
         ]);
@@ -32,7 +37,6 @@ class UserController extends Controller
 
         return response(['user'=>$user,'access_token'=>$accessToken]);
 
-        return $this->successResponse($user, Response::HTTP_CREATED);
     }
 
     public function login(Request $request){
@@ -40,6 +44,7 @@ class UserController extends Controller
         $loginData = $request->validate([
             'email' => 'email|required',
             'password' => 'required',
+
         ]);
 
 
@@ -48,7 +53,12 @@ class UserController extends Controller
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
-        return response(['user' => auth()->user(), 'access_token' => $accessToken]);
+
+
+        return response(['user' => auth()->user()->load(['country','language','level','mode']), 'access_token' => $accessToken]);
+
+        return $this->successResponse($user, Response::HTTP_CREATED);
+
 
     }
 

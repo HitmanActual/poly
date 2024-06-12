@@ -15,4 +15,8 @@ class Mode extends Model
         'title',
     ];
 
+    public function users(){
+        return
+            $this->hasMany(User::class);
+    }
 }
