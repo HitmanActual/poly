@@ -18,7 +18,8 @@ class SubjectController extends Controller
     public function index()
     {
         //
-        $subjects = Subject::with(['translation'])->get();
+
+        $subjects = Subject::with(['translation','modes'])->get();
         return $this->successResponse($subjects, Response::HTTP_OK);
 
     }
@@ -44,6 +45,7 @@ class SubjectController extends Controller
 
 
             $subject = Subject::create($validateData);
+            $subject->modes()->sync($request->modes);
             return $this->successResponse($subject, Response::HTTP_CREATED);
 
         } catch (QueryException $exception) {
@@ -85,6 +87,7 @@ class SubjectController extends Controller
         }
         $subject->subject_title = $request->subject_title;
         $subject->description = $request->description;
+        $subject->modes()->syncWithoutDetaching($request->modes);
 
         $subject->save();
         return $this->successResponse($subject, Response::HTTP_OK);

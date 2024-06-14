@@ -19,4 +19,8 @@ class Mode extends Model
         return
             $this->hasMany(User::class);
     }
+
+    public function subjects(){
+        return $this->belongsToMany(Subject::class);
+    }
 }

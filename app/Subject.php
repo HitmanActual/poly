@@ -18,4 +18,8 @@ class Subject extends Model
     public function translation(){
         return $this->hasMany(Translation::class);
     }
+
+    public function modes(){
+        return $this->belongsToMany(Mode::class);
+    }
 }
