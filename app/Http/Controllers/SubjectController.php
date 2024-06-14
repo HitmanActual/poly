@@ -18,7 +18,7 @@ class SubjectController extends Controller
     public function index()
     {
         //
-        $subjects = Subject::all();
+        $subjects = Subject::with(['translation'])->get();
         return $this->successResponse($subjects, Response::HTTP_OK);
 
     }
